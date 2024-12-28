@@ -13,7 +13,6 @@ void writeContentInInputFile(std::string s) {
 
 void clearInputFile() { writeContentInInputFile(""); }
 
-
 TEST_CASE("Should read input.txt file content", "[readFileContent]") {
   std::string inputContent1 = "Fluminense Futebol Clube";
   writeContentInInputFile(inputContent1);
@@ -36,18 +35,6 @@ TEST_CASE("Should read input.txt file content", "[readFileContent]") {
 
 TEST_CASE("Should read input.txt considering break line and spaces",
           "[readFileContent]") {
-
-  auto vectorsAreEqual = [](std::vector<std::string> vector1, std::vector<std::string> vector2) {
-    if ((int)vector1.size() != (int)vector2.size())
-      return false;
-    bool flag = true;
-
-    for (int i = 0; i < (int)vector1.size(); i++) {
-      flag &= (vector1[i] == vector2[i]);
-    }
-
-    return flag;
-  };
   std::string inputContent1 = "Fluminense \nFutebol Clube";
   writeContentInInputFile(inputContent1);
   REQUIRE(inputContent1 == readFileContent());
@@ -70,6 +57,19 @@ TEST_CASE("Should read input.txt considering break line and spaces",
 
 TEST_CASE("Should split the string words and return a vector with then",
           "[splitStringContentInWords]") {
+  auto vectorsAreEqual = [](std::vector<std::string> vector1,
+                            std::vector<std::string> vector2) {
+    if ((int)vector1.size() != (int)vector2.size())
+      return false;
+    bool flag = true;
+
+    for (int i = 0; i < (int)vector1.size(); i++) {
+      flag &= (vector1[i] == vector2[i]);
+    }
+
+    return flag;
+  };
+
   std::string str1 =
       "Sou tricolor de coração\n sou do clube tantas vezes campeão";
   std::vector<std::string> expectedReturn1 = {
@@ -177,11 +177,7 @@ TEST_CASE("Should count the frequency of each word in the input file",
   writeContentInInputFile(content3);
   WordsCounter count3 = getWordsCount();
   std::vector<std::pair<std::string, int>> expectedResult3 = {
-      {"zero", 4},
-      {"oito", 1},
-      {"dois", 1},
-      {"quatro", 1},
-      {"cinco", 1},
+      {"zero", 4}, {"oito", 1}, {"dois", 1}, {"quatro", 1}, {"cinco", 1},
   };
   REQUIRE(checkWordsCount(expectedResult3, count3));
 
@@ -189,11 +185,7 @@ TEST_CASE("Should count the frequency of each word in the input file",
   writeContentInInputFile(content4);
   WordsCounter count4 = getWordsCount();
   std::vector<std::pair<std::string, int>> expectedResult4 = {
-      {"bom", 2},
-      {"Bom", 1},
-      {"boM", 1},
-      {"bOm", 1},
-      {"BoM", 1},
+      {"bom", 2}, {"Bom", 1}, {"boM", 1}, {"bOm", 1}, {"BoM", 1},
   };
   REQUIRE(checkWordsCount(expectedResult4, count4));
 
