@@ -60,6 +60,15 @@ std::vector<std::string> splitStringContentInWords(std::string str) {
   return words;
 }
 
+/**
+ * @brief This function reads gets the content of a file splited considering
+ * blank spaces and count the frequency of each word in this text; this count
+ * use sensitive case, in other words it differs lower case and upper case
+ * character and consider them different
+ *
+ * @return WordsCounter; An struct the keeps a frequency counter for each word
+ * in a text
+ */
 WordsCounter getWordsCount() {
   const std::string text = readFileContent();
   const std::vector<std::string> words = splitStringContentInWords(text);
