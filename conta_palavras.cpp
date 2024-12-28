@@ -22,3 +22,8 @@ std::string readFileContent() {
 
   return fileFullContent;
 }
+
+std::vector<std::string> splitStringContent(std::string str) {
+    std::vector<std::string> words;
+    return words;
+}

@@ -15,6 +15,16 @@ void writeContentInInputFile(std::string s) {
 
 void clearInputFile() { writeContentInInputFile(""); }
 
+bool vectorsAreEqual(std::vector<std::string> vector1, std::vector<std::string> vector2) {
+    if(vector1.size() != vector2.size()) return false;
+    bool flag = true;
+
+    for(int i=0; i<(int)vector1.size(); i++) 
+        flag &= (vector1[i]==vector2[i]);
+
+    return flag;
+}
+
 TEST_CASE("Should read input.txt file content", "[readFileContent]") {
   std::string inputContent1 = "Fluminense Futebol Clube";
   writeContentInInputFile(inputContent1);
@@ -28,9 +38,16 @@ TEST_CASE("Should read input.txt file content", "[readFileContent]") {
   writeContentInInputFile(inputContent3);
   REQUIRE(inputContent3 == readFileContent());
 
+  std::string inputContent4 = "Este texto é o texto que será utilizado";
+  writeContentInInputFile(inputContent4);
+  REQUIRE(inputContent4 == readFileContent());
+
   clearInputFile();
 }
-TEST_CASE("Should read input.txt considering break line and spaces", "[readFileContent]") {
+
+
+TEST_CASE("Should read input.txt considering break line and spaces",
+          "[readFileContent]") {
   std::string inputContent1 = "Fluminense \nFutebol Clube";
   writeContentInInputFile(inputContent1);
   REQUIRE(inputContent1 == readFileContent());
@@ -43,5 +60,16 @@ TEST_CASE("Should read input.txt considering break line and spaces", "[readFileC
   writeContentInInputFile(inputContent3);
   REQUIRE(inputContent3 == readFileContent());
 
+  std::string inputContent4 = "Este\n texto\n é\n o\n texto\n que será\n utilizado";
+  writeContentInInputFile(inputContent4);
+  REQUIRE(inputContent4 == readFileContent());
+
   clearInputFile();
+}
+
+
+TEST_CASE("Should split words the string and return a collection with then", "[splitStringContent]") {
+    std::string str = "Sou tricolor de coração\n sou do clube tantas vezes campeão";
+    std::vector<std::string> expectedReturn = {"Sou", "tricolor", "de", "coração", "sou", "do", "clube", "tantas", "vezes", "campeão"};
+    REQUIRE(vectorsAreEqual(expectedReturn, splitStringContent(str)));  
 }
