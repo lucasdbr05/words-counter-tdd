@@ -4,4 +4,4 @@
 #include <vector>
 
 std::string readFileContent();
-std::vector<std::string> splitStringContent(std::string str);
+std::vector<std::string> splitStringContentInWords(std::string str);

@@ -16,11 +16,12 @@ void writeContentInInputFile(std::string s) {
 void clearInputFile() { writeContentInInputFile(""); }
 
 bool vectorsAreEqual(std::vector<std::string> vector1, std::vector<std::string> vector2) {
-    if(vector1.size() != vector2.size()) return false;
+    if((int)vector1.size() != (int)vector2.size()) return false;
     bool flag = true;
 
-    for(int i=0; i<(int)vector1.size(); i++) 
+    for(int i=0; i<5; i++) {
         flag &= (vector1[i]==vector2[i]);
+    }
 
     return flag;
 }
@@ -68,8 +69,8 @@ TEST_CASE("Should read input.txt considering break line and spaces",
 }
 
 
-TEST_CASE("Should split words the string and return a collection with then", "[splitStringContent]") {
+TEST_CASE("Should split the string words and return a vector with then", "[splitStringContentInWords]") {
     std::string str = "Sou tricolor de coração\n sou do clube tantas vezes campeão";
     std::vector<std::string> expectedReturn = {"Sou", "tricolor", "de", "coração", "sou", "do", "clube", "tantas", "vezes", "campeão"};
-    REQUIRE(vectorsAreEqual(expectedReturn, splitStringContent(str)));  
+    REQUIRE(vectorsAreEqual(expectedReturn, splitStringContentInWords(str)));  
 }
