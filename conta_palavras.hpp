@@ -17,6 +17,7 @@ struct WordsCounter {
 
   void addWord(std::string s) { counter[s]++; }
   int getWordCount(std::string s) { return counter[s]; }
+  int size() { return counter.size(); }
 };
 
 std::string readFileContent();
