@@ -1,4 +1,4 @@
-#include "conta_palavras.hpp"
+#include "./conta_palavras.hpp"
 
 /**
  * @brief           This function reads the content in the default input file
@@ -7,20 +7,20 @@
  * @return std::string          The content of the input file.
  */
 std::string readFileContent() {
-  const std::string inputFilePath = "input.txt";
-  std::ifstream file(inputFilePath);
+    const std::string inputFilePath = "input.txt";
+    std::ifstream file(inputFilePath);
 
-  std::string fileFullContent;
-  std::string lineContent;
-  while (getline(file, lineContent)) {
-    fileFullContent += lineContent;
-    fileFullContent += '\n';
-  }
-  fileFullContent.pop_back();
+    std::string fileFullContent;
+    std::string lineContent;
+    while (getline(file, lineContent)) {
+        fileFullContent += lineContent;
+        fileFullContent += '\n';
+    }
+    fileFullContent.pop_back();
 
-  file.close();
+    file.close();
 
-  return fileFullContent;
+    return fileFullContent;
 }
 
 /**
@@ -33,31 +33,31 @@ std::string readFileContent() {
  * "str" string
  */
 std::vector<std::string> splitStringContentInWords(std::string str) {
-  std::vector<std::string> words;
+    std::vector<std::string> words;
 
-  int str_size = str.size();
+    int str_size = str.size();
 
-  std::string current_word = "";
-  bool isLetter;
+    std::string current_word = "";
+    bool isLetter;
 
-  for (int i = 0; i < str_size; i++) {
-    isLetter = (str[i] != ' ') && (str[i] != '\n');
-    if (!isLetter) {
-      if ((int)current_word.size() > 0) {
-        words.push_back(current_word);
-      }
-      current_word = "";
+    for (int i = 0; i < str_size; i++) {
+        isLetter = (str[i] != ' ') && (str[i] != '\n');
+        if (!isLetter) {
+            if (static_cast<int>(current_word.size()) > 0) {
+                words.push_back(current_word);
+            }
+            current_word = "";
+        }
+
+        if (isLetter) {
+            current_word.push_back(str[i]);
+        }
+
+        if ((i + 1) == str_size && static_cast<int>(current_word.size()) > 0)
+            words.push_back(current_word);
     }
 
-    if (isLetter) {
-      current_word.push_back(str[i]);
-    }
-
-    if ((i + 1) == str_size && (int)current_word.size() > 0)
-      words.push_back(current_word);
-  }
-
-  return words;
+    return words;
 }
 
 /**
@@ -70,8 +70,8 @@ std::vector<std::string> splitStringContentInWords(std::string str) {
  * in a text
  */
 WordsCounter getWordsCount() {
-  const std::string text = readFileContent();
-  const std::vector<std::string> words = splitStringContentInWords(text);
+    const std::string text = readFileContent();
+    const std::vector<std::string> words = splitStringContentInWords(text);
 
-  return WordsCounter(words);
+    return WordsCounter(words);
 }
