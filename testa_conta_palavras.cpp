@@ -149,18 +149,53 @@ TEST_CASE("Should count the frequency of each word in the input file",
       flag &= counter.getWordCount(p.first) == p.second;
     }
 
+    flag &= ((int)v.size() == counter.size());
+
     return flag;
   };
 
   std::string content1 = "Fluminense Futebol Clube";
   writeContentInInputFile(content1);
   WordsCounter count1 = getWordsCount();
-  std::vector<std::pair<std::string, int>> expectedResult = {
+  std::vector<std::pair<std::string, int>> expectedResult1 = {
       {"Fluminense", 1},
       {"Futebol", 1},
       {"Clube", 1},
   };
-  REQUIRE(checkWordsCount(expectedResult, count1));
+  REQUIRE(checkWordsCount(expectedResult1, count1));
+
+  std::string content2 = "Este texto é o texto que será utilizado";
+  writeContentInInputFile(content2);
+  WordsCounter count2 = getWordsCount();
+  std::vector<std::pair<std::string, int>> expectedResult2 = {
+      {"Este", 1}, {"texto", 2}, {"é", 1},         {"o", 1},
+      {"que", 1},  {"será", 1},  {"utilizado", 1},
+  };
+  REQUIRE(checkWordsCount(expectedResult2, count2));
+
+  std::string content3 = "zero oito zero quatro dois zero zero cinco";
+  writeContentInInputFile(content3);
+  WordsCounter count3 = getWordsCount();
+  std::vector<std::pair<std::string, int>> expectedResult3 = {
+      {"zero", 4},
+      {"oito", 1},
+      {"dois", 1},
+      {"quatro", 1},
+      {"cinco", 1},
+  };
+  REQUIRE(checkWordsCount(expectedResult3, count3));
+
+  std::string content4 = "Bom bom bOm boM bom BoM";
+  writeContentInInputFile(content4);
+  WordsCounter count4 = getWordsCount();
+  std::vector<std::pair<std::string, int>> expectedResult4 = {
+      {"bom", 2},
+      {"Bom", 1},
+      {"boM", 1},
+      {"bOm", 1},
+      {"BoM", 1},
+  };
+  REQUIRE(checkWordsCount(expectedResult4, count4));
 
   clearInputFile();
 }
