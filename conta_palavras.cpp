@@ -23,6 +23,14 @@ std::string readFileContent() {
   return fileFullContent;
 }
 
+
+/**
+ * @brief this function gets a string and split it in its black spaces (considering space and break line)
+ * 
+ * @param str  string to be splited in its blank spaces
+ * 
+ * @return std::vector<std::string> a vector containing the words present in the "str" string
+ */
 std::vector<std::string> splitStringContentInWords(std::string str) {
   std::vector<std::string> words;
 
