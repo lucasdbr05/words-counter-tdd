@@ -5,3 +5,6 @@ testa_conta_palavras
 *.gcno
 *.gcda
 *.gcov
+input.txt
+html 
+latex

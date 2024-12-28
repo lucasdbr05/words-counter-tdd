@@ -42,6 +42,8 @@ debug: testa_conta_palavras.cpp   conta_palavras.cpp conta_palavras.hpp
 	g++ -std=c++17 -Wall  -g conta_palavras.o testa_conta_palavras.cpp -o testa_conta_palavras
 	gdb testa_conta_palavras
 	
+docs: testa_conta_palavras.cpp conta_palavras.cpp conta_palavras.hpp
+	doxygen
 	
 cppcheck: testa_conta_palavras.cpp   conta_palavras.cpp conta_palavras.hpp
 	cppcheck  --enable=warning .
