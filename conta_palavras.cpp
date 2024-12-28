@@ -61,7 +61,8 @@ std::vector<std::string> splitStringContentInWords(std::string str) {
 }
 
 WordsCounter getWordsCount() {
-  WordsCounter wordsCount;
+  const std::string text = readFileContent();
+  const std::vector<std::string> words = splitStringContentInWords(text);
 
-  return wordsCount;
+  return WordsCounter(words);
 }
