@@ -7,6 +7,11 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief struct to get a collection of words (as strings) and build a frequency
+ * counter for each different word
+ *
+ */
 struct WordsCounter {
     std::map<std::string, int> counter;
 
