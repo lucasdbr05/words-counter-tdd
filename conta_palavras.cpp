@@ -14,7 +14,9 @@ std::string readFileContent() {
   std::string lineContent;
   while (getline(file, lineContent)) {
     fileFullContent += lineContent;
+    fileFullContent += '\n';
   }
+  fileFullContent.pop_back();
 
   file.close();
 
