@@ -13,9 +13,7 @@ void writeContentInInputFile(std::string s) {
   inputFile.close();
 }
 
-void clearInputFile() {
-    writeContentInInputFile("");
-}
+void clearInputFile() { writeContentInInputFile(""); }
 
 TEST_CASE("Should read input.txt file content", "[readFileContent]") {
   std::string inputContent1 = "Fluminense Futebol Clube";
@@ -27,6 +25,21 @@ TEST_CASE("Should read input.txt file content", "[readFileContent]") {
   REQUIRE(inputContent2 == readFileContent());
 
   std::string inputContent3 = "Lucas Gabriel de Oliveira Lima";
+  writeContentInInputFile(inputContent3);
+  REQUIRE(inputContent3 == readFileContent());
+
+  clearInputFile();
+}
+TEST_CASE("Should read input.txt considering break line and spaces", "[readFileContent]") {
+  std::string inputContent1 = "Fluminense \nFutebol Clube";
+  writeContentInInputFile(inputContent1);
+  REQUIRE(inputContent1 == readFileContent());
+
+  std::string inputContent2 = "Cidade\nOcidental";
+  writeContentInInputFile(inputContent2);
+  REQUIRE(inputContent2 == readFileContent());
+
+  std::string inputContent3 = "Lucas Gabriel de\n Oliveira Lima";
   writeContentInInputFile(inputContent3);
   REQUIRE(inputContent3 == readFileContent());
 

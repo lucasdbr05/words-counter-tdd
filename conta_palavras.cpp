@@ -6,17 +6,17 @@
  *
  * @return std::string          The content of the input file.
  */
-std::string readFileContent() { 
-    const std::string inputFilePath = "input.txt"; 
-    std::ifstream file(inputFilePath);
+std::string readFileContent() {
+  const std::string inputFilePath = "input.txt";
+  std::ifstream file(inputFilePath);
 
-    std::string fileFullContent;
-    std::string lineContent;
-    while(getline(file, lineContent)) {
-        fileFullContent += lineContent;
-    }
+  std::string fileFullContent;
+  std::string lineContent;
+  while (getline(file, lineContent)) {
+    fileFullContent += lineContent;
+  }
 
-    file.close();
+  file.close();
 
-    return fileFullContent;
+  return fileFullContent;
 }
