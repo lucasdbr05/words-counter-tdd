@@ -1,7 +1,5 @@
 #include "conta_palavras.hpp"
-#include <fstream>
-#include <iostream>
-#include <string>
+#include <utility>
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
@@ -70,7 +68,6 @@ TEST_CASE("Should read input.txt considering break line and spaces",
   clearInputFile();
 }
 
-
 TEST_CASE("Should split the string words and return a vector with then",
           "[splitStringContentInWords]") {
   std::string str1 =
@@ -98,25 +95,26 @@ TEST_CASE("Should split the string words and return a vector with then",
   REQUIRE(vectorsAreEqual(expectedReturn4, splitStringContentInWords(str4)));
 
   std::string str5 = "German    Ezequiel Cano \n  \n Recalde";
-  std::vector<std::string> expectedReturn5= {
-    "German","Ezequiel","Cano","Recalde",
+  std::vector<std::string> expectedReturn5 = {
+      "German",
+      "Ezequiel",
+      "Cano",
+      "Recalde",
   };
   REQUIRE(vectorsAreEqual(expectedReturn5, splitStringContentInWords(str5)));
 }
 
-
 TEST_CASE("Should not contain space or break line in a single word",
           "[splitStringContentInWords]") {
-    std::vector<std::string> words;
-    auto checkIfNotContainSpaceAndBreakLine = [](std::vector<std::string>& v){
-        bool flag = true;
+  std::vector<std::string> words;
+  auto checkIfNotContainSpaceAndBreakLine = [](std::vector<std::string> &v) {
+    bool flag = true;
 
-        for(std::string s : v) {
-            flag &= (s.find(' ') == s.npos) && (s.find('\n') && s.npos);
-        }
-        return flag;
-    };
-
+    for (std::string s : v) {
+      flag &= (s.find(' ') == s.npos) && (s.find('\n') && s.npos);
+    }
+    return flag;
+  };
 
   std::string str1 =
       "Sou tricolor de coração\n sou do clube tantas vezes campeão";
@@ -139,4 +137,30 @@ TEST_CASE("Should not contain space or break line in a single word",
   std::string str5 = "German    Ezequiel Cano \n   \n Recalde";
   words = splitStringContentInWords(str5);
   REQUIRE(checkIfNotContainSpaceAndBreakLine(words));
+}
+
+TEST_CASE("Should count the frequency of each word in the input file",
+          "[getWordsCount]") {
+
+  auto checkWordsCount = [](const std::vector<std::pair<std::string, int>> &v,
+                            WordsCounter &counter) {
+    bool flag = true;
+    for (std::pair<std::string, int> p : v) {
+      flag &= counter.getWordCount(p.first) == p.second;
+    }
+
+    return flag;
+  };
+
+  std::string content1 = "Fluminense Futebol Clube";
+  writeContentInInputFile(content1);
+  WordsCounter count1 = getWordsCount();
+  std::vector<std::pair<std::string, int>> expectedResult = {
+      {"Fluminense", 1},
+      {"Futebol", 1},
+      {"Clube", 1},
+  };
+  REQUIRE(checkWordsCount(expectedResult, count1));
+
+  clearInputFile();
 }
