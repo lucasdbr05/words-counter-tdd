@@ -1,0 +1,7 @@
+.vscode
+build
+conta_palavras.o
+testa_conta_palavras
+*.gcno
+*.gcda
+*.gcov
