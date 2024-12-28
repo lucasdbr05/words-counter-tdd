@@ -53,4 +53,4 @@ valgrind: testa_conta_palavras
 	valgrind --leak-check=yes --log-file=valgrind.rpt ./testa_conta_palavras
 
 clean:
-	rm -rf *.o *.exe *.gc* testa_conta_palavras 
+	rm -rf *.o *.exe *.gc* testa_conta_palavras ./html ./latex
