@@ -19,5 +19,4 @@ std::string readFileContent() {
     file.close();
 
     return fileFullContent;
-
 }
