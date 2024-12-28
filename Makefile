@@ -29,7 +29,7 @@ cpplint: testa_conta_palavras.cpp   conta_palavras.cpp conta_palavras.hpp
 	clang-format -i conta_palavras.cpp 
 	clang-format -i conta_palavras.hpp
 	clang-format -i testa_conta_palavras.cpp
-	cpplint   --exclude=catch.hpp  *.*
+	cpplint   --exclude=catch.hpp input.txt  *.*
 
 gcov: testa_conta_palavras.cpp   conta_palavras.cpp conta_palavras.hpp 
 	g++ -std=c++17 -Wall -fprofile-arcs -ftest-coverage -c conta_palavras.cpp
