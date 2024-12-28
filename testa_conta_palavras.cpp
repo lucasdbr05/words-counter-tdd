@@ -21,7 +21,7 @@ bool vectorsAreEqual(std::vector<std::string> vector1,
     return false;
   bool flag = true;
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < (int)vector1.size(); i++) {
     flag &= (vector1[i] == vector2[i]);
   }
 
@@ -70,6 +70,7 @@ TEST_CASE("Should read input.txt considering break line and spaces",
   clearInputFile();
 }
 
+
 TEST_CASE("Should split the string words and return a vector with then",
           "[splitStringContentInWords]") {
   std::string str1 =
@@ -91,4 +92,51 @@ TEST_CASE("Should split the string words and return a vector with then",
       "Este", "texto", "é", "o", "texto", "que", "será", "utilizado",
   };
   REQUIRE(vectorsAreEqual(expectedReturn3, splitStringContentInWords(str3)));
+
+  std::string str4 = "Bom bom       dia";
+  std::vector<std::string> expectedReturn4 = {"Bom", "bom", "dia"};
+  REQUIRE(vectorsAreEqual(expectedReturn4, splitStringContentInWords(str4)));
+
+  std::string str5 = "German    Ezequiel Cano \n  \n Recalde";
+  std::vector<std::string> expectedReturn5= {
+    "German","Ezequiel","Cano","Recalde",
+  };
+  REQUIRE(vectorsAreEqual(expectedReturn5, splitStringContentInWords(str5)));
+}
+
+
+TEST_CASE("Should not contain space or break line in a single word",
+          "[splitStringContentInWords]") {
+    std::vector<std::string> words;
+    auto checkIfNotContainSpaceAndBreakLine = [](std::vector<std::string>& v){
+        bool flag = true;
+
+        for(std::string s : v) {
+            flag &= (s.find(' ') == s.npos) && (s.find('\n') && s.npos);
+        }
+        return flag;
+    };
+
+
+  std::string str1 =
+      "Sou tricolor de coração\n sou do clube tantas vezes campeão";
+  words = splitStringContentInWords(str1);
+  REQUIRE(checkIfNotContainSpaceAndBreakLine(words));
+
+  std::string str2 = "O objetivo deste trabalho é utilizar o desenvolvimento "
+                     "orientado a testes";
+  words = splitStringContentInWords(str2);
+  REQUIRE(checkIfNotContainSpaceAndBreakLine(words));
+
+  std::string str3 = "Este texto é o texto que será utilizado";
+  words = splitStringContentInWords(str3);
+  REQUIRE(checkIfNotContainSpaceAndBreakLine(words));
+
+  std::string str4 = "Bom bom       dia";
+  words = splitStringContentInWords(str4);
+  REQUIRE(checkIfNotContainSpaceAndBreakLine(words));
+
+  std::string str5 = "German    Ezequiel Cano \n   \n Recalde";
+  words = splitStringContentInWords(str5);
+  REQUIRE(checkIfNotContainSpaceAndBreakLine(words));
 }
