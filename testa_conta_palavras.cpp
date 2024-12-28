@@ -13,18 +13,6 @@ void writeContentInInputFile(std::string s) {
 
 void clearInputFile() { writeContentInInputFile(""); }
 
-bool vectorsAreEqual(std::vector<std::string> vector1,
-                     std::vector<std::string> vector2) {
-  if ((int)vector1.size() != (int)vector2.size())
-    return false;
-  bool flag = true;
-
-  for (int i = 0; i < (int)vector1.size(); i++) {
-    flag &= (vector1[i] == vector2[i]);
-  }
-
-  return flag;
-}
 
 TEST_CASE("Should read input.txt file content", "[readFileContent]") {
   std::string inputContent1 = "Fluminense Futebol Clube";
@@ -48,6 +36,18 @@ TEST_CASE("Should read input.txt file content", "[readFileContent]") {
 
 TEST_CASE("Should read input.txt considering break line and spaces",
           "[readFileContent]") {
+
+  auto vectorsAreEqual = [](std::vector<std::string> vector1, std::vector<std::string> vector2) {
+    if ((int)vector1.size() != (int)vector2.size())
+      return false;
+    bool flag = true;
+
+    for (int i = 0; i < (int)vector1.size(); i++) {
+      flag &= (vector1[i] == vector2[i]);
+    }
+
+    return flag;
+  };
   std::string inputContent1 = "Fluminense \nFutebol Clube";
   writeContentInInputFile(inputContent1);
   REQUIRE(inputContent1 == readFileContent());
