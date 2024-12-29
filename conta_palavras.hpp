@@ -1,13 +1,14 @@
 #ifndef CONTA_PALAVRAS_HPP_
 #define CONTA_PALAVRAS_HPP_
 
+#include <math.h>
+
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <math.h>
 
 /**
  * @brief struct to get a collection of words (as strings) and build a frequency
@@ -15,26 +16,60 @@
  *
  */
 struct WordsCounter {
-    private:
+   private:
+    std::map<std::string, int> counter;
+    std::string alphabetStringOrder =
+        "aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyzAÃÁÂBCÇDEẼÉÊFGHIĨÍÎJKLMNÑOÕ"
+        "ÓÔPQRSTUŨÚÛVWXYZ";
+    std::map<char, int> characterOrder;
 
-        std::map<std::string, int> counter;
-        
+    void buildCharacterOrder() {
+        for (int i = 0; i < static_cast<int>(alphabetStringOrder.size()); i++) {
+            characterOrder[alphabetStringOrder[i]] = i;
+        }
+    }
 
-    public:
+    bool comparator(std::pair<std::string, int> a,
+                    std::pair<std::string, int> b) {
+        int a_size = a.first.size();
+        int b_size = b.first.size();
 
-        WordsCounter(std::vector<std::string> words) {
-            for (std::string s : words) {
-                addWord(s);
-            }
+        for (int i = 0; i < std::min(a_size, b_size); i++) {
+            if (characterOrder[a.first[i]] == characterOrder[b.first[i]])
+                continue;
+
+            return characterOrder[a.first[i]] < characterOrder[b.first[i]];
+        }
+        return a_size < b_size;
+    }
+
+   public:
+    WordsCounter(std::vector<std::string> words) {
+        buildCharacterOrder();
+        for (std::string s : words) {
+            addWord(s);
+        }
+    }
+
+    void addWord(std::string s) { counter[s]++; }
+
+    int getWordCount(std::string s) { return counter[s]; }
+
+    int size() { return counter.size(); }
+
+    std::vector<std::pair<std::string, int>> getSortedValues() {
+        std::vector<std::pair<std::string, int>> data;
+        for (std::pair<std::string, int> cnt : counter) {
+            data.push_back(cnt);
         }
 
-        void addWord(std::string s) { counter[s]++; }
-
-        int getWordCount(std::string s) { return counter[s]; }
-
-        int size() { return counter.size(); }
-
-        std::map<std::string, int> data() { return counter; }
+        std::sort(data.begin(), data.end(),
+                  [this](const std::pair<std::string, int>& a,
+                         const std::pair<std::string, int>& b) {
+                      return this->comparator(a, b);
+                  });
+        return data;
+    }
 };
 
 /**
