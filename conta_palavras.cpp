@@ -4,17 +4,19 @@
  * @brief           This function reads the content in the default input file
  * and return it as a string.
  *
- * @return std::string          The content of the input file.
+ * @return std::wstring          The content of the input file.
  */
-std::string readFileContent() {
+std::wstring readFileContent() {
     const std::string inputFilePath = "input.txt";
     std::ifstream file(inputFilePath);
 
-    std::string fileFullContent;
+    std::wstring fileFullContent;
     std::string lineContent;
     while (getline(file, lineContent)) {
-        fileFullContent += lineContent;
-        fileFullContent += '\n';
+        std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+        std::wstring wLineContent = converter.from_bytes(lineContent);
+        fileFullContent += wLineContent;
+        fileFullContent += L'\n';
     }
     fileFullContent.pop_back();
 
@@ -29,24 +31,24 @@ std::string readFileContent() {
  *
  * @param str  string to be splited in its blank spaces
  *
- * @return std::vector<std::string> a vector containing the words present in the
+ * @return std::vector<std::wstring> a vector containing the words present in the
  * "str" string
  */
-std::vector<std::string> splitStringContentInWords(std::string str) {
-    std::vector<std::string> words;
+std::vector<std::wstring> splitStringContentInWords(std::wstring str) {
+    std::vector<std::wstring> words;
 
     int str_size = str.size();
 
-    std::string current_word = "";
+    std::wstring current_word = L"";
     bool isLetter;
 
     for (int i = 0; i < str_size; i++) {
-        isLetter = (str[i] != ' ') && (str[i] != '\n');
+        isLetter = (str[i] != L' ') && (str[i] != L'\n');
         if (!isLetter) {
             if (static_cast<int>(current_word.size()) > 0) {
                 words.push_back(current_word);
             }
-            current_word = "";
+            current_word = L"";
         }
 
         if (isLetter) {
@@ -70,8 +72,8 @@ std::vector<std::string> splitStringContentInWords(std::string str) {
  * in a text
  */
 WordsCounter getWordsCount() {
-    const std::string text = readFileContent();
-    const std::vector<std::string> words = splitStringContentInWords(text);
+    const std::wstring text = readFileContent();
+    const std::vector<std::wstring> words = splitStringContentInWords(text);
 
     return WordsCounter(words);
 }
