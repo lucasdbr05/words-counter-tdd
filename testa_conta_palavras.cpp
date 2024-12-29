@@ -12,11 +12,12 @@ void writeContentInInputFile(std::string s) {
     inputFile.close();
 }
 
+void clearInputFile() { writeContentInInputFile(""); }
+
 std::wstring toWString(std::string s) {
     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
     return converter.from_bytes(s);
 }
-void clearInputFile() { writeContentInInputFile(""); }
 
 TEST_CASE("Should read input.txt file content", "[readFileContent]") {
     std::string inputContent1 = "Fluminense Futebol Clube";
@@ -235,6 +236,23 @@ TEST_CASE(
     writeContentInInputFile(data);
     expectedOrder = {L"cinco",L"dois", L"oito", L"quatro", L"zero"};
     REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
+
+    clearInputFile();
+}
+
+
+TEST_CASE(
+    "Should list the words frequency sorted lexicographically and formatted as a string",
+    "[getWordsCountFormatted]") {
+
+    std::wstring expectedListing;
+    std::string data;
+
+
+    data = "o fluminense é o maior do brasil";
+    writeContentInInputFile(data);
+    expectedListing = L"brasil: 1\ndo: 1\né: 1\nfluminense: 1\nmaior: 1\no: 2\n";
+    REQUIRE(expectedListing == getWordsCountFormatted());
 
     clearInputFile();
 }
