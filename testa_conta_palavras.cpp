@@ -201,7 +201,7 @@ TEST_CASE("Should count the frequency of each word in the input file",
 }
 
 TEST_CASE(
-    "Should mantain the words frequency sorted lexicographically by the words",
+    "Should mantain the words frequency sorted lexicographically ascending by the words",
     "[getWordsCount]") {
     auto checkIfIsSorted = [](std::vector<std::wstring> &v,
                               WordsCounter counter) {
@@ -220,9 +220,21 @@ TEST_CASE(
     std::vector<std::wstring> expectedOrder;
     std::string data;
 
+
     data = "fluminense é o maior do brasil";
     writeContentInInputFile(data);
     expectedOrder = {L"brasil", L"do", L"é", L"fluminense", L"maior", L"o"};
-
     REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
+
+    data = "young da baixada young de são gonçalo young de brasília";
+    writeContentInInputFile(data);
+    expectedOrder = {L"baixada",L"brasília", L"da", L"de", L"gonçalo", L"são", L"young"};
+    REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
+
+    data = "zero oito zero quatro dois zero zero cinco";
+    writeContentInInputFile(data);
+    expectedOrder = {L"cinco",L"dois", L"oito", L"quatro", L"zero"};
+    REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
+
+    clearInputFile();
 }
