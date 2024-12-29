@@ -4,13 +4,13 @@
 #include <math.h>
 
 #include <algorithm>
+#include <codecvt>
 #include <fstream>
 #include <iostream>
+#include <locale>
 #include <map>
 #include <string>
 #include <vector>
-#include <locale>
-#include <codecvt>
 
 /**
  * @brief struct to get a collection of words (as strings) and build a frequency
@@ -21,7 +21,8 @@ struct WordsCounter {
    private:
     std::map<std::wstring, int> counter;
     std::wstring alphabetStringOrder =
-        L"aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyzAÃÁÂBCÇDEẼÉÊFGHIĨÍÎJKLMNÑOÕ"
+        L"aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyzAÃÁÂBCÇDEẼÉÊFGHIĨÍÎJKLMNÑO"
+        L"Õ"
         "ÓÔPQRSTUŨÚÛVWXYZ";
     std::map<wchar_t, int> characterOrder;
 
@@ -34,9 +35,10 @@ struct WordsCounter {
     std::wstring formatListRow(std::pair<std::wstring, int> wordCount) {
         auto intToWString = [](int number) {
             std::wstring s = L"";
-            while(number > 0) {
-                wchar_t digit = L'0' + (number%10);
-                s = digit + s; number /= 10; 
+            while (number > 0) {
+                wchar_t digit = L'0' + (number % 10);
+                s = digit + s;
+                number /= 10;
             }
             return s;
         };
@@ -50,8 +52,7 @@ struct WordsCounter {
         int b_size = b.first.size();
 
         for (int i = 0; i < std::min(a_size, b_size); i++) {
-            if (a.first[i] == b.first[i])
-                continue;
+            if (a.first[i] == b.first[i]) continue;
 
             return characterOrder[a.first[i]] < characterOrder[b.first[i]];
         }
@@ -67,12 +68,12 @@ struct WordsCounter {
     }
 
     std::wstring listWords() {
-        std::vector<std::pair<std::wstring, int>> countSorted = this->getSortedValues();
+        std::vector<std::pair<std::wstring, int>> countSorted =
+            this->getSortedValues();
 
         std::wstring list = L"";
 
-
-        for(std::pair<std::wstring, int> cnt: countSorted) {
+        for (std::pair<std::wstring, int> cnt : countSorted) {
             list += formatListRow(cnt) + L'\n';
         }
 
@@ -115,8 +116,8 @@ std::wstring readFileContent();
  *
  * @param str  string to be splited in its blank spaces
  *
- * @return std::vector<std::wstring> a vector containing the words present in the
- * "str" string
+ * @return std::vector<std::wstring> a vector containing the words present in
+ * the "str" string
  */
 std::vector<std::wstring> splitStringContentInWords(std::wstring str);
 
@@ -132,9 +133,12 @@ std::vector<std::wstring> splitStringContentInWords(std::wstring str);
 WordsCounter getWordsCount();
 
 /**
- * @brief Get the Words Count Formatted object
- * 
- * @return std::wstring 
+ * @brief Get the Words Count Formatted object. This format uses the pattern
+ * "word: frequncy\n" the words are sorted lexycographically in ascending order
+ * as specified in the sort of the WordsCounter
+ *
+ * @return std::wstring the object containing the words and its frequency sorted
+ * lexycographically in ascending order
  */
 std::wstring getWordsCountFormatted();
 

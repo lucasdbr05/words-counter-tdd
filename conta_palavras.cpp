@@ -31,8 +31,8 @@ std::wstring readFileContent() {
  *
  * @param str  string to be splited in its blank spaces
  *
- * @return std::vector<std::wstring> a vector containing the words present in the
- * "str" string
+ * @return std::vector<std::wstring> a vector containing the words present in
+ * the "str" string
  */
 std::vector<std::wstring> splitStringContentInWords(std::wstring str) {
     std::vector<std::wstring> words;
@@ -78,7 +78,14 @@ WordsCounter getWordsCount() {
     return WordsCounter(words);
 }
 
-
+/**
+ * @brief Get the Words Count Formatted object. This format uses the pattern
+ * "word: frequncy\n" the words are sorted lexycographically in ascending order
+ * as specified in the sort of the WordsCounter
+ *
+ * @return std::wstring the object containing the words and its frequency sorted
+ * lexycographically in ascending order
+ */
 std::wstring getWordsCountFormatted() {
     WordsCounter counter = getWordsCount();
     return counter.listWords();
