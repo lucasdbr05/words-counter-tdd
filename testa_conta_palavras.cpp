@@ -89,8 +89,9 @@ TEST_CASE("Should split the wstring words and return a vector with then",
         L"O objetivo deste trabalho é utilizar o desenvolvimento "
         "orientado a testes";
     std::vector<std::wstring> expectedReturn2 = {
-        L"O", L"objetivo",        L"deste",     L"trabalho", L"é",     L"utilizar",
-        L"o", L"desenvolvimento", L"orientado", L"a",        L"testes"};
+        L"O",         L"objetivo", L"deste", L"trabalho",
+        L"é",         L"utilizar", L"o",     L"desenvolvimento",
+        L"orientado", L"a",        L"testes"};
     REQUIRE(vectorsAreEqual(expectedReturn2, splitStringContentInWords(str2)));
 
     std::wstring str3 = L"Este texto é o texto que será utilizado";
@@ -151,17 +152,18 @@ TEST_CASE("Should not contain space or break line in a single word",
 
 TEST_CASE("Should count the frequency of each word in the input file",
           "[getWordsCount]") {
-    auto checkWordsCount = [](const std::vector<std::pair<std::wstring, int>> &v,
-                              WordsCounter &counter) {
-        bool flag = true;
-        for (std::pair<std::wstring, int> p : v) {
-            flag &= counter.getWordCount(p.first) == p.second;
-        }
+    auto checkWordsCount =
+        [](const std::vector<std::pair<std::wstring, int>> &v,
+           WordsCounter &counter) {
+            bool flag = true;
+            for (std::pair<std::wstring, int> p : v) {
+                flag &= counter.getWordCount(p.first) == p.second;
+            }
 
-        flag &= (static_cast<int>(v.size()) == counter.size());
+            flag &= (static_cast<int>(v.size()) == counter.size());
 
-        return flag;
-    };
+            return flag;
+        };
 
     std::string content1 = "Fluminense Futebol Clube";
     writeContentInInputFile(content1);
@@ -202,7 +204,8 @@ TEST_CASE("Should count the frequency of each word in the input file",
 }
 
 TEST_CASE(
-    "Should mantain the words frequency sorted lexicographically ascending by the words",
+    "Should mantain the words frequency sorted lexicographically ascending by "
+    "the words",
     "[getWordsCount]") {
     auto checkIfIsSorted = [](std::vector<std::wstring> &v,
                               WordsCounter counter) {
@@ -221,7 +224,6 @@ TEST_CASE(
     std::vector<std::wstring> expectedOrder;
     std::string data;
 
-
     data = "fluminense é o maior do brasil";
     writeContentInInputFile(data);
     expectedOrder = {L"brasil", L"do", L"é", L"fluminense", L"maior", L"o"};
@@ -229,29 +231,39 @@ TEST_CASE(
 
     data = "young da baixada young de são gonçalo young de brasília";
     writeContentInInputFile(data);
-    expectedOrder = {L"baixada",L"brasília", L"da", L"de", L"gonçalo", L"são", L"young"};
+    expectedOrder = {L"baixada", L"brasília", L"da",   L"de",
+                     L"gonçalo", L"são",      L"young"};
     REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
 
     data = "zero oito zero quatro dois zero zero cinco";
     writeContentInInputFile(data);
-    expectedOrder = {L"cinco",L"dois", L"oito", L"quatro", L"zero"};
+    expectedOrder = {L"cinco", L"dois", L"oito", L"quatro", L"zero"};
     REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
 
     clearInputFile();
 }
 
-
 TEST_CASE(
-    "Should list the words frequency sorted lexicographically and formatted as a string",
+    "Should list the words frequency sorted lexicographically and formatted as "
+    "a string",
     "[getWordsCountFormatted]") {
-
     std::wstring expectedListing;
     std::string data;
 
-
     data = "o fluminense é o maior do brasil";
     writeContentInInputFile(data);
-    expectedListing = L"brasil: 1\ndo: 1\né: 1\nfluminense: 1\nmaior: 1\no: 2\n";
+    expectedListing =
+        L"brasil: 1\ndo: 1\né: 1\nfluminense: 1\nmaior: 1\no: 2\n";
+    REQUIRE(expectedListing == getWordsCountFormatted());
+
+    data = "zero oito zero quatro dois zero zero cinco";
+    writeContentInInputFile(data);
+    expectedListing = L"cinco: 1\ndois: 1\noito: 1\nquatro: 1\nzero: 4\n";
+    REQUIRE(expectedListing == getWordsCountFormatted());
+
+    data = "a a a a a a a a a a a a";
+    writeContentInInputFile(data);
+    expectedListing = L"a: 12\n";
     REQUIRE(expectedListing == getWordsCountFormatted());
 
     clearInputFile();
