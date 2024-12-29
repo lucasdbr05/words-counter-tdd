@@ -77,3 +77,9 @@ WordsCounter getWordsCount() {
 
     return WordsCounter(words);
 }
+
+
+std::wstring getWordsCountFormatted() {
+    WordsCounter counter = getWordsCount();
+    return counter.listWords();
+}

@@ -31,6 +31,19 @@ struct WordsCounter {
         }
     }
 
+    std::wstring formatListRow(std::pair<std::wstring, int> wordCount) {
+        auto intToWString = [](int number) {
+            std::wstring s = L"";
+            while(number > 0) {
+                wchar_t digit = L'0' + (number%10);
+                s = digit + s; number /= 10; 
+            }
+            return s;
+        };
+
+        return wordCount.first + L": " + intToWString(wordCount.second);
+    }
+
     bool comparator(const std::pair<std::wstring, int>& a,
                     const std::pair<std::wstring, int>& b) {
         int a_size = a.first.size();
@@ -51,6 +64,19 @@ struct WordsCounter {
         for (std::wstring s : words) {
             addWord(s);
         }
+    }
+
+    std::wstring listWords() {
+        std::vector<std::pair<std::wstring, int>> countSorted = this->getSortedValues();
+
+        std::wstring list = L"";
+
+
+        for(std::pair<std::wstring, int> cnt: countSorted) {
+            list += formatListRow(cnt) + L'\n';
+        }
+
+        return list;
     }
 
     void addWord(std::wstring s) { counter[s]++; }
@@ -104,5 +130,12 @@ std::vector<std::wstring> splitStringContentInWords(std::wstring str);
  * in a text
  */
 WordsCounter getWordsCount();
+
+/**
+ * @brief Get the Words Count Formatted object
+ * 
+ * @return std::wstring 
+ */
+std::wstring getWordsCountFormatted();
 
 #endif  // CONTA_PALAVRAS_HPP_
