@@ -6,6 +6,8 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <math.h>
 
 /**
  * @brief struct to get a collection of words (as strings) and build a frequency
@@ -13,19 +15,26 @@
  *
  */
 struct WordsCounter {
-    std::map<std::string, int> counter;
+    private:
 
-    WordsCounter() {}
+        std::map<std::string, int> counter;
+        
 
-    WordsCounter(std::vector<std::string> words) {
-        for (std::string s : words) {
-            addWord(s);
+    public:
+
+        WordsCounter(std::vector<std::string> words) {
+            for (std::string s : words) {
+                addWord(s);
+            }
         }
-    }
 
-    void addWord(std::string s) { counter[s]++; }
-    int getWordCount(std::string s) { return counter[s]; }
-    int size() { return counter.size(); }
+        void addWord(std::string s) { counter[s]++; }
+
+        int getWordCount(std::string s) { return counter[s]; }
+
+        int size() { return counter.size(); }
+
+        std::map<std::string, int> data() { return counter; }
 };
 
 /**
