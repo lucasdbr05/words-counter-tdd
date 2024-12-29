@@ -196,18 +196,30 @@ TEST_CASE("Should count the frequency of each word in the input file",
     clearInputFile();
 }
 
+TEST_CASE(
+    "Should mantain the words frequency sorted lexicographically by the words",
+    "[getWordsCount]") {
+    auto checkIfIsSorted = [](std::vector<std::string> &v,
+                              WordsCounter counter) {
+        bool flag = true;
+        int ithString = 0;
+        for (std::pair<std::string, int> p : counter.getSortedValues()) {
 
-TEST_CASE("Should mantain the words frequency sorted lexicographically by the words", "[getWordsCount]") {
-    auto checkIfIsSorted = [](std::vector<std::string>& v, WordsCounter counter) {
-      bool flag = true;
-      int ithString = 0;
-        for (std::pair<std::string, int> p : counter.data()) {
-            flag &= p.first == v[ithString-1];
+            flag &= p.first == v[ithString];
             ithString++;
         }
 
         flag &= (static_cast<int>(v.size()) == counter.size());
 
-        return flag;  
+        return flag;
     };
+
+    std::vector<std::string> expectedOrder;
+    std::string data;
+
+    data = "fluminense é o maior do brasil";
+    writeContentInInputFile(data);
+    expectedOrder = {"brasil", "do", "é", "fluminense", "maior", "o"};
+
+    REQUIRE(checkIfIsSorted(expectedOrder, getWordsCount()));
 }
