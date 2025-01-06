@@ -261,9 +261,9 @@ TEST_CASE(
     expectedListing = L"cinco: 1\ndois: 1\noito: 1\nquatro: 1\nzero: 4\n";
     REQUIRE(expectedListing == getWordsCountFormatted());
 
-    data = "a a a a a a a a a a a a";
+    data = "a a a a a a a a a a a a aa";
     writeContentInInputFile(data);
-    expectedListing = L"a: 12\n";
+    expectedListing = L"a: 12\naa: 1\n";
     REQUIRE(expectedListing == getWordsCountFormatted());
 
     clearInputFile();
