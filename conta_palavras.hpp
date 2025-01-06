@@ -20,18 +20,22 @@
 struct WordsCounter {
    private:
     std::map<std::wstring, int> counter;
+
+    // Letter sorted in alphabetical order
     std::wstring alphabetStringOrder =
         L"aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyzAÃÁÂBCÇDEẼÉÊFGHIĨÍÎJKLMNÑO"
         L"Õ"
         "ÓÔPQRSTUŨÚÛVWXYZ";
     std::map<wchar_t, int> characterOrder;
 
+    // Index each letter in alphabetical order
     void buildCharacterOrder() {
         for (int i = 0; i < static_cast<int>(alphabetStringOrder.size()); i++) {
             characterOrder[alphabetStringOrder[i]] = i;
         }
     }
 
+    // Format each row on listing words counting formatted
     std::wstring formatListRow(std::pair<std::wstring, int> wordCount) {
         auto intToWString = [](int number) {
             std::wstring s = L"";
@@ -46,6 +50,7 @@ struct WordsCounter {
         return wordCount.first + L": " + intToWString(wordCount.second);
     }
 
+    // Comparator used to sort words
     bool comparator(const std::pair<std::wstring, int>& a,
                     const std::pair<std::wstring, int>& b) {
         int a_size = a.first.size();
@@ -67,6 +72,12 @@ struct WordsCounter {
         }
     }
 
+    /**
+     * @brief
+     *
+     * @return std::wstring the formatted string with the counting of each word
+     * sorted alphabetically in increasing order
+     */
     std::wstring listWords() {
         std::vector<std::pair<std::wstring, int>> countSorted =
             this->getSortedValues();
@@ -80,12 +91,35 @@ struct WordsCounter {
         return list;
     }
 
+    /**
+     * @brief Increase by 1 the counting of the word s in the totol count
+     *
+     * @param s the word to increase the frequency
+     */
     void addWord(std::wstring s) { counter[s]++; }
 
+    /**
+     * @brief Get the count of a word s
+     *
+     * @param s the word to get the frequency
+     * @return int the frequency of the word s
+     */
     int getWordCount(std::wstring s) { return counter[s]; }
 
+    /**
+     * @brief method used to get the words counter's size
+     *
+     * @return int    defined as the number of different words
+     */
     int size() { return counter.size(); }
 
+    /**
+     * @brief get the words sorted by the alphabetical order and the frequency
+     * of each word
+     *
+     * @return std::vector<std::pair<std::wstring, int>> a vector sorted in
+     * alphabetical order countaining in each pair a word and its frequency
+     */
     std::vector<std::pair<std::wstring, int>> getSortedValues() {
         std::vector<std::pair<std::wstring, int>> data;
         for (std::pair<std::wstring, int> cnt : counter) {
