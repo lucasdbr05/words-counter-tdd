@@ -12,6 +12,7 @@ std::wstring readFileContent() {
 
     std::wstring fileFullContent;
     std::string lineContent;
+    
     while (getline(file, lineContent)) {
         std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
         std::wstring wLineContent = converter.from_bytes(lineContent);

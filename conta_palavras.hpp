@@ -24,8 +24,7 @@ struct WordsCounter {
     // Letter sorted in alphabetical order
     std::wstring alphabetStringOrder =
         L"aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyzAÃÁÂBCÇDEẼÉÊFGHIĨÍÎJKLMNÑO"
-        L"Õ"
-        "ÓÔPQRSTUŨÚÛVWXYZ";
+        L"ÕÓÔPQRSTUŨÚÛVWXYZ";
     std::map<wchar_t, int> characterOrder;
 
     // Index each letter in alphabetical order

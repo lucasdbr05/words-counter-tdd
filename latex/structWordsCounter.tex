@@ -1,0 +1,106 @@
+\hypertarget{structWordsCounter}{}\doxysection{Words\+Counter Struct Reference}
+\label{structWordsCounter}\index{WordsCounter@{WordsCounter}}
+
+
+struct to get a collection of words (as strings) and build a frequency counter for each different word  
+
+
+
+
+{\ttfamily \#include $<$conta\+\_\+palavras.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structWordsCounter_ae4448410a93efe470527c542474a0130}\label{structWordsCounter_ae4448410a93efe470527c542474a0130}} 
+{\bfseries Words\+Counter} (std\+::vector$<$ std\+::wstring $>$ words)
+\item 
+std\+::wstring \mbox{\hyperlink{structWordsCounter_a9dcc401830233d95060b4e532a8f6d44}{list\+Words}} ()
+\item 
+void \mbox{\hyperlink{structWordsCounter_ad7ec1cb5df4c4770c58988121d58ec3d}{add\+Word}} (std\+::wstring s)
+\begin{DoxyCompactList}\small\item\em Increase by 1 the counting of the word s in the totol count. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structWordsCounter_a0326f2f749120ac2150f1c94c18b66a7}{get\+Word\+Count}} (std\+::wstring s)
+\begin{DoxyCompactList}\small\item\em Get the count of a word s. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structWordsCounter_a65ee7ef23382a5ac6f3c4bbebe85ebc3}{size}} ()
+\begin{DoxyCompactList}\small\item\em method used to get the words counter\textquotesingle{}s size \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ std\+::wstring, int $>$ $>$ \mbox{\hyperlink{structWordsCounter_ae5298636126dbb834450fe677bf2d926}{get\+Sorted\+Values}} ()
+\begin{DoxyCompactList}\small\item\em get the words sorted by the alphabetical order and the frequency of each word \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+struct to get a collection of words (as strings) and build a frequency counter for each different word 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structWordsCounter_ad7ec1cb5df4c4770c58988121d58ec3d}\label{structWordsCounter_ad7ec1cb5df4c4770c58988121d58ec3d}} 
+\index{WordsCounter@{WordsCounter}!addWord@{addWord}}
+\index{addWord@{addWord}!WordsCounter@{WordsCounter}}
+\doxysubsubsection{\texorpdfstring{addWord()}{addWord()}}
+{\footnotesize\ttfamily void Words\+Counter\+::add\+Word (\begin{DoxyParamCaption}\item[{std\+::wstring}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Increase by 1 the counting of the word s in the totol count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & the word to increase the frequency \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structWordsCounter_ae5298636126dbb834450fe677bf2d926}\label{structWordsCounter_ae5298636126dbb834450fe677bf2d926}} 
+\index{WordsCounter@{WordsCounter}!getSortedValues@{getSortedValues}}
+\index{getSortedValues@{getSortedValues}!WordsCounter@{WordsCounter}}
+\doxysubsubsection{\texorpdfstring{getSortedValues()}{getSortedValues()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$std\+::wstring, int$>$ $>$ Words\+Counter\+::get\+Sorted\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the words sorted by the alphabetical order and the frequency of each word 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$std\+::wstring, int$>$$>$ a vector sorted in alphabetical order countaining in each pair a word and its frequency 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structWordsCounter_a0326f2f749120ac2150f1c94c18b66a7}\label{structWordsCounter_a0326f2f749120ac2150f1c94c18b66a7}} 
+\index{WordsCounter@{WordsCounter}!getWordCount@{getWordCount}}
+\index{getWordCount@{getWordCount}!WordsCounter@{WordsCounter}}
+\doxysubsubsection{\texorpdfstring{getWordCount()}{getWordCount()}}
+{\footnotesize\ttfamily int Words\+Counter\+::get\+Word\+Count (\begin{DoxyParamCaption}\item[{std\+::wstring}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the count of a word s. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & the word to get the frequency \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the frequency of the word s 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structWordsCounter_a9dcc401830233d95060b4e532a8f6d44}\label{structWordsCounter_a9dcc401830233d95060b4e532a8f6d44}} 
+\index{WordsCounter@{WordsCounter}!listWords@{listWords}}
+\index{listWords@{listWords}!WordsCounter@{WordsCounter}}
+\doxysubsubsection{\texorpdfstring{listWords()}{listWords()}}
+{\footnotesize\ttfamily std\+::wstring Words\+Counter\+::list\+Words (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+std\+::wstring the formatted string with the counting of each word sorted alphabetically in increasing order 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structWordsCounter_a65ee7ef23382a5ac6f3c4bbebe85ebc3}\label{structWordsCounter_a65ee7ef23382a5ac6f3c4bbebe85ebc3}} 
+\index{WordsCounter@{WordsCounter}!size@{size}}
+\index{size@{size}!WordsCounter@{WordsCounter}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int Words\+Counter\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+method used to get the words counter\textquotesingle{}s size 
+
+\begin{DoxyReturn}{Returns}
+int defined as the number of different words 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+conta\+\_\+palavras.\+hpp\end{DoxyCompactItemize}

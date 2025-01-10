@@ -6,6 +6,4 @@ testa_conta_palavras
 *.gcda
 *.gcov
 input.txt
-html 
-latex
 valgrind.rpt
