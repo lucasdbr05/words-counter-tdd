@@ -266,5 +266,11 @@ TEST_CASE(
     expectedListing = L"a: 12\naa: 1\n";
     REQUIRE(expectedListing == getWordsCountFormatted());
 
+    data = "Este texto é o texto que será utilizado";
+    writeContentInInputFile(data);
+    expectedListing =
+        L"é: 1\nEste: 1\no: 1\nque: 1\nserá: 1\ntexto: 2\nutilizado: 1\n";
+    REQUIRE(expectedListing == getWordsCountFormatted());
+
     clearInputFile();
 }

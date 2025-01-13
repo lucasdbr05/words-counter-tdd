@@ -23,13 +23,31 @@ struct WordsCounter {
 
     // Letter sorted in alphabetical order
     std::wstring alphabetStringOrder =
-        L"aAãÃáÁâÂbBcCçÇdDeEẽẼéÉêÊfFgGhHiIĩĨíÍîÎjJkKlLmMnNñÑoOõÕóÓôÔpPqQrRsStTu"
-        L"UũŨúÚûÛvVwWxXyYzZ";
+        L"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     std::map<wchar_t, int> characterOrder;
+    std::map<wchar_t, wchar_t> filteredChars;
+
+    // Filtered caracteres in lowercase and without accent
+    void buildFilteredCharacters() {
+        std::map<wchar_t, std::wstring> variations = {
+            {L'a', L"ãáâàÃÁÂÀ"}, {L'c', L"çÇ"},       {L'e', L"ẽéêèẼÉÊÈ"},
+            {L'i', L"ĩíîìĨÍÎÌ"}, {L'o', L"õóôòÕÓÔÒ"}, {L'u', L"ũúûùŨÚÛÙ"}};
+        for (int i = 0; i < 26; i++) {
+            filteredChars[alphabetStringOrder[i]] = alphabetStringOrder[i];
+            filteredChars[alphabetStringOrder[i + 26]] = alphabetStringOrder[i];
+        }
+
+        for (auto [filtered, variation] : variations) {
+            for (auto ch : variation) {
+                filteredChars[ch] = filtered;
+            }
+        }
+    }
 
     // Index each letter in alphabetical order
     void buildCharacterOrder() {
-        for (int i = 0; i < static_cast<int>(alphabetStringOrder.size()); i++) {
+        for (int i = 0; i < static_cast<int>(alphabetStringOrder.size()) / 2;
+             i++) {
             characterOrder[alphabetStringOrder[i]] = i;
         }
     }
@@ -56,16 +74,20 @@ struct WordsCounter {
         int b_size = b.first.size();
 
         for (int i = 0; i < std::min(a_size, b_size); i++) {
-            if (a.first[i] == b.first[i]) continue;
+            if (filteredChars[a.first[i]] == filteredChars[b.first[i]])
+                continue;
 
-            return characterOrder[a.first[i]] < characterOrder[b.first[i]];
+            return characterOrder[filteredChars[a.first[i]]] <
+                   characterOrder[filteredChars[b.first[i]]];
         }
         return a_size < b_size;
     }
 
    public:
     WordsCounter(std::vector<std::wstring> words) {
+        buildFilteredCharacters();
         buildCharacterOrder();
+
         for (std::wstring s : words) {
             addWord(s);
         }
