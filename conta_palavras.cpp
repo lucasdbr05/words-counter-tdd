@@ -1,10 +1,15 @@
 #include "./conta_palavras.hpp"
 
+#include <iostream>
+
 /**
  * @brief           This function reads the content in the default input file
  * and return it as a string.
+ *  - The input content contains just letter characters (can contains accent
+ * too)
+ *  - The input file is just "input.txt"
  *
- * @return std::wstring          The content of the input file.
+ * @return std::wstring          The formatted content of the input file.
  */
 std::wstring readFileContent() {
     const std::string inputFilePath = "input.txt";
@@ -12,7 +17,7 @@ std::wstring readFileContent() {
 
     std::wstring fileFullContent;
     std::string lineContent;
-    
+
     while (getline(file, lineContent)) {
         std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
         std::wstring wLineContent = converter.from_bytes(lineContent);
@@ -27,7 +32,7 @@ std::wstring readFileContent() {
 }
 
 /**
- * @brief this function gets a string and split it in its black spaces
+ * @brief this function gets a string and split it in its blank spaces
  * (considering space and break line)
  *
  * @param str  string to be splited in its blank spaces
