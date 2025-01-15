@@ -52,17 +52,14 @@ make cpplint
 ```
 
 ## Sobre o projeto 
-O projeto consiste em um programa que lê o conteúdo de um arquivo de texto (por padrão, definido como input.txt) e conta a frequência de cada palavra presente no texto. Após essa contagem, o programa retorna a frequência de cada palavra, com as palavras ordenadas em ordem lexicográfica ascendente.
+O projeto consiste em um programa que lê o conteúdo de um arquivo de texto (por padrão, definido como input.txt) e conta a frequência de cada palavra na entrada. Após essa contagem, o programa retorna a frequência de cada palavra, com as palavras ordenadas em ordem lexicográfica crescente.
 
-Como as palavras podem conter diacríticos, foi assumida uma ordem diferente daquela dada pelos caracteres ASCII estendidos na codificação UTF-8. Especificamente, as letras acentuadas são ordenadas após suas correspondentes não acentuadas e antes da próxima letra não acentuada. Para letras com a mesma base não acentuada, a seguinte ordem é assumida: ~, ´, ^.
+Como as palavras podem conter diacríticos, foi assumida uma ordem diferente daquela dada pelos caracteres ASCII estendidos na codificação UTF-8. Especificamente, as letras acentuadas são ordenadas da mesma forma que suas correspondentes sem acento, independentemente de serem maiúsculas ou minúsculas.
 
 Com isso, a seguinte ordem lexicográfica é usada para a ordenação:
-
 ```shell
   aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyz
 ```
-Nesse caso, letras maiúsculas são consideradas superiores às minúsculas e seguirão a mesma ordem descrita acima para letras maiúsculas.
-
 
 ## Resultados
 

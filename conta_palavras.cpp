@@ -35,8 +35,9 @@ std::wstring readFileContent() {
  * @brief this function gets a string and split it in its blank spaces
  * (considering space and break line)
  *
- * @param str  string to be splited in its blank spaces
- *
+ * @param str  string to be splited in its blank spaces 
+ *      - this blank spaces are space (' ') or break line ('\n')
+ * 
  * @return std::vector<std::wstring> a vector containing the words present in
  * the "str" string
  */
@@ -69,12 +70,12 @@ std::vector<std::wstring> splitStringContentInWords(std::wstring str) {
 }
 
 /**
- * @brief This function reads gets the content of a file splited considering
+ * @brief This function gets the content of a file splited considering
  * blank spaces and count the frequency of each word in this text; this count
  * use sensitive case, in other words it differs lower case and upper case
  * character and consider them different
  *
- * @return WordsCounter; An struct the keeps a frequency counter for each word
+ * @return WordsCounter; A struct that stores  a frequency counter for each word
  * in a text
  */
 WordsCounter getWordsCount() {
@@ -86,7 +87,7 @@ WordsCounter getWordsCount() {
 
 /**
  * @brief Get the Words Count Formatted object. This format uses the pattern
- * "word: frequncy\n" the words are sorted lexycographically in ascending order
+ * "word: frequency\n"the words are sorted lexycographically in ascending order
  * as specified in the sort of the WordsCounter
  *
  * @return std::wstring the object containing the words and its frequency sorted

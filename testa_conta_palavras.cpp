@@ -245,7 +245,7 @@ TEST_CASE(
 
 TEST_CASE(
     "Should list the words frequency sorted lexicographically and formatted as "
-    "a string",
+    "a wstring",
     "[getWordsCountFormatted]") {
     std::wstring expectedListing;
     std::string data;
@@ -270,6 +270,18 @@ TEST_CASE(
     writeContentInInputFile(data);
     expectedListing =
         L"é: 1\nEste: 1\no: 1\nque: 1\nserá: 1\ntexto: 2\nutilizado: 1\n";
+    REQUIRE(expectedListing == getWordsCountFormatted());
+    
+    data = "Um dois três índiozinhos\nQuatro cinco seis índiozinhos";
+    writeContentInInputFile(data);
+    expectedListing =
+        L"cinco: 1\ndois: 1\níndiozinhos: 2\nQuatro: 1\nseis: 1\ntrês: 1\nUm: 1\n";
+    REQUIRE(expectedListing == getWordsCountFormatted());
+
+    data = "é á í ú ó";
+    writeContentInInputFile(data);
+    expectedListing =
+        L"á: 1\né: 1\ní: 1\nó: 1\nú: 1\n";
     REQUIRE(expectedListing == getWordsCountFormatted());
 
     clearInputFile();

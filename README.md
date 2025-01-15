@@ -55,15 +55,13 @@ make cpplint
 
 The project consists of a program that reads the content of a text file (by default, defined as input.txt) and counts the frequency of each word in the input. After this count, the program returns the frequency of each word, with the words sorted in ascending lexicographical order.
 
-Since words may contain diacritics, an order different from the one given by extended ASCII characters in UTF-8 encoding was assumed. Specifically, accented letters are ordered after their corresponding unaccented letters and before the next unaccented letter. For letters with the same unaccented base, the order is assumed to be: '~', '´', '^'.
+Since words may contain diacritics, an order different from the one given by extended ASCII characters in UTF-8 encoding was assumed. Specifically, accented letters are ordered equally to their corresponding unaccented letters, beeing it uppercase or lowercase. 
 
 With this, the following lexicographical order is used for sorting:
 
 ```shell
-  aãáâbcçdeẽéêfghiĩíîjklmnñoõóôpqrstuũúûvwxyz
+  abcdefghijklmnopqrstuvwxyz
 ```
-In this case, uppercase letters are considered superior to lowercase letters and will follow the same order as above for uppercase letters.
-
 
 ## Results
 

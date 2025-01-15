@@ -29,9 +29,8 @@ struct WordsCounter {
 
     // Filtered caracteres in lowercase and without accent
     void buildFilteredCharacters() {
-        std::map<wchar_t, std::wstring> variations = {
-            {L'a', L"ãáâàÃÁÂÀ"}, {L'c', L"çÇ"},       {L'e', L"ẽéêèẼÉÊÈ"},
-            {L'i', L"ĩíîìĨÍÎÌ"}, {L'o', L"õóôòÕÓÔÒ"}, {L'u', L"ũúûùŨÚÛÙ"}};
+        std::vector<std::pair<wchar_t, std::wstring>> variations = 
+          {{L'a', L"ãáâàÃÁÂÀ"}, {L'c', L"çÇ"}, {L'e', L"ẽéêèẼÉÊÈ"}, {L'i', L"ĩíîìĨÍÎÌ"}, {L'o', L"õóôòÕÓÔÒ"}, {L'u', L"ũúûùŨÚÛÙ"}};
         for (int i = 0; i < 26; i++) {
             filteredChars[alphabetStringOrder[i]] = alphabetStringOrder[i];
             filteredChars[alphabetStringOrder[i + 26]] = alphabetStringOrder[i];
@@ -94,7 +93,7 @@ struct WordsCounter {
     }
 
     /**
-     * @brief
+     * @brief  get the formatted value of the words counting
      *
      * @return std::wstring the formatted string with the counting of each word
      * sorted alphabetically in increasing order
@@ -159,37 +158,37 @@ struct WordsCounter {
 
 /**
  * @brief           This function reads the content in the default input file
- * and return it as a string.
+ * and return it as a wstring.
  *
  * @return std::wstring          The content of the input file.
  */
 std::wstring readFileContent();
 
 /**
- * @brief this function gets a string and split it in its black spaces
+ * @brief this function gets a wstring and split it in its black spaces
  * (considering space and break line)
  *
- * @param str  string to be splited in its blank spaces
+ * @param str  wstring to be splited in its blank spaces
  *
  * @return std::vector<std::wstring> a vector containing the words present in
- * the "str" string
+ * the "str" wstring
  */
 std::vector<std::wstring> splitStringContentInWords(std::wstring str);
 
 /**
- * @brief This function reads gets the content of a file splited considering
+ * @brief This function gets the content of a file splited considering
  * blank spaces and count the frequency of each word in this text; this count
  * use sensitive case, in other words it differs lower case and upper case
  * character and consider them different
  *
- * @return WordsCounter; An struct the keeps a frequency counter for each word
+ * @return WordsCounter; A struct that stores  a frequency counter for each word
  * in a text
  */
 WordsCounter getWordsCount();
 
 /**
  * @brief Get the Words Count Formatted object. This format uses the pattern
- * "word: frequncy\n" the words are sorted lexycographically in ascending order
+ * "word: frequency\n"the words are sorted lexycographically in ascending order
  * as specified in the sort of the WordsCounter
  *
  * @return std::wstring the object containing the words and its frequency sorted
