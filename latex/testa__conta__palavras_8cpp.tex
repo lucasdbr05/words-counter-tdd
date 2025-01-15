@@ -1,0 +1,121 @@
+\hypertarget{testa__conta__palavras_8cpp}{}\doxysection{testa\+\_\+conta\+\_\+palavras.\+cpp File Reference}
+\label{testa__conta__palavras_8cpp}\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include \char`\"{}./conta\+\_\+palavras.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./catch.\+hpp\char`\"{}}\newline
+Include dependency graph for testa\+\_\+conta\+\_\+palavras.\+cpp\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{testa__conta__palavras_8cpp_a656eb5868e824d59f489f910db438420}{CATCH\+\_\+\+CONFIG\+\_\+\+MAIN}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{testa__conta__palavras_8cpp_af46ac4f720c629f4c901d1bce54ee692}{write\+Content\+In\+Input\+File}} (std\+::string s)
+\item 
+void \mbox{\hyperlink{testa__conta__palavras_8cpp_a82d827ec56ce22079f5681d3a234bdbb}{clear\+Input\+File}} ()
+\item 
+std\+::wstring \mbox{\hyperlink{testa__conta__palavras_8cpp_a2bffd024ac277ce29e0772aa486ac9e5}{to\+WString}} (std\+::string s)
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_ac4b85de502208fbd536fd65715b4cec6}{TEST\+\_\+\+CASE}} (\char`\"{}Should read input.\+txt file content\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a93bc233b932cda7d71f3135e0067d7a8}{read\+File\+Content}}\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_a098400c90b5fe4832b7968ced1b0a6ed}{TEST\+\_\+\+CASE}} (\char`\"{}Should read input.\+txt considering break line and spaces\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a93bc233b932cda7d71f3135e0067d7a8}{read\+File\+Content}}\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_a93ef7e93e7d52a1d367af84b1378ba35}{TEST\+\_\+\+CASE}} (\char`\"{}Should split the wstring words and return a vector with then\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a162daa6db8b9e87f1d6bf074517b1a22}{split\+String\+Content\+In\+Words}}\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_a00a17ddde34be9a9cb676778bf744c8d}{TEST\+\_\+\+CASE}} (\char`\"{}Should not contain space or break line in a single word\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a162daa6db8b9e87f1d6bf074517b1a22}{split\+String\+Content\+In\+Words}}\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_af9d1151bdfdf50c5dff8c30c18ce9229}{TEST\+\_\+\+CASE}} (\char`\"{}Should count the frequency of each word in the input file\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a01a1078d9fd20b293223351b8830917b}{get\+Words\+Count}}\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_ab9c0d35fbd98ea1f5e2f7eb59b03b38f}{TEST\+\_\+\+CASE}} (\char`\"{}Should mantain the words frequency sorted lexicographically ascending by \char`\"{} \char`\"{}the words\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a01a1078d9fd20b293223351b8830917b}{get\+Words\+Count}}\mbox{]}\char`\"{})
+\item 
+\mbox{\hyperlink{testa__conta__palavras_8cpp_ac5a0259699b91abc221055b11ca85c6a}{TEST\+\_\+\+CASE}} (\char`\"{}Should list the words frequency sorted lexicographically and formatted as \char`\"{} \char`\"{}a wstring\char`\"{}, \char`\"{}\mbox{[}\mbox{\hyperlink{conta__palavras_8hpp_a75ac9754702c7b0d301c2b1e07f958de}{get\+Words\+Count\+Formatted}}\mbox{]}\char`\"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char \mbox{\hyperlink{testa__conta__palavras_8cpp_ad9fe309e3a12de4c13f4e55d756a8b82}{test\+Input\+File\+Path}} \mbox{[}$\,$\mbox{]} = \char`\"{}input.\+txt\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_a656eb5868e824d59f489f910db438420}\label{testa__conta__palavras_8cpp_a656eb5868e824d59f489f910db438420}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!CATCH\_CONFIG\_MAIN@{CATCH\_CONFIG\_MAIN}}
+\index{CATCH\_CONFIG\_MAIN@{CATCH\_CONFIG\_MAIN}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{CATCH\_CONFIG\_MAIN}{CATCH\_CONFIG\_MAIN}}
+{\footnotesize\ttfamily \#define CATCH\+\_\+\+CONFIG\+\_\+\+MAIN}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_a82d827ec56ce22079f5681d3a234bdbb}\label{testa__conta__palavras_8cpp_a82d827ec56ce22079f5681d3a234bdbb}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!clearInputFile@{clearInputFile}}
+\index{clearInputFile@{clearInputFile}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{clearInputFile()}{clearInputFile()}}
+{\footnotesize\ttfamily void clear\+Input\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_af9d1151bdfdf50c5dff8c30c18ce9229}\label{testa__conta__palavras_8cpp_af9d1151bdfdf50c5dff8c30c18ce9229}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should count the frequency of each word in the input file\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}get\+Words\+Count\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_ac5a0259699b91abc221055b11ca85c6a}\label{testa__conta__palavras_8cpp_ac5a0259699b91abc221055b11ca85c6a}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should list the words frequency sorted lexicographically and formatted as \char`\"{} \char`\"{}a wstring\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}get\+Words\+Count\+Formatted\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_ab9c0d35fbd98ea1f5e2f7eb59b03b38f}\label{testa__conta__palavras_8cpp_ab9c0d35fbd98ea1f5e2f7eb59b03b38f}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should mantain the words frequency sorted lexicographically ascending by \char`\"{} \char`\"{}the words\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}get\+Words\+Count\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_a00a17ddde34be9a9cb676778bf744c8d}\label{testa__conta__palavras_8cpp_a00a17ddde34be9a9cb676778bf744c8d}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should not contain space or break line in a single word\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}split\+String\+Content\+In\+Words\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_a098400c90b5fe4832b7968ced1b0a6ed}\label{testa__conta__palavras_8cpp_a098400c90b5fe4832b7968ced1b0a6ed}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should read input.\+txt considering break line and spaces\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}read\+File\+Content\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_ac4b85de502208fbd536fd65715b4cec6}\label{testa__conta__palavras_8cpp_ac4b85de502208fbd536fd65715b4cec6}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should read input.\+txt file content\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}read\+File\+Content\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_a93ef7e93e7d52a1d367af84b1378ba35}\label{testa__conta__palavras_8cpp_a93ef7e93e7d52a1d367af84b1378ba35}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Should split the wstring words and return a vector with then\char`\"{}}]{,  }\item[{\char`\"{}\char`\"{}}]{\mbox{[}split\+String\+Content\+In\+Words\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_a2bffd024ac277ce29e0772aa486ac9e5}\label{testa__conta__palavras_8cpp_a2bffd024ac277ce29e0772aa486ac9e5}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!toWString@{toWString}}
+\index{toWString@{toWString}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{toWString()}{toWString()}}
+{\footnotesize\ttfamily std\+::wstring to\+WString (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_af46ac4f720c629f4c901d1bce54ee692}\label{testa__conta__palavras_8cpp_af46ac4f720c629f4c901d1bce54ee692}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!writeContentInInputFile@{writeContentInInputFile}}
+\index{writeContentInInputFile@{writeContentInInputFile}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{writeContentInInputFile()}{writeContentInInputFile()}}
+{\footnotesize\ttfamily void write\+Content\+In\+Input\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{testa__conta__palavras_8cpp_ad9fe309e3a12de4c13f4e55d756a8b82}\label{testa__conta__palavras_8cpp_ad9fe309e3a12de4c13f4e55d756a8b82}} 
+\index{testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}!testInputFilePath@{testInputFilePath}}
+\index{testInputFilePath@{testInputFilePath}!testa\_conta\_palavras.cpp@{testa\_conta\_palavras.cpp}}
+\doxysubsubsection{\texorpdfstring{testInputFilePath}{testInputFilePath}}
+{\footnotesize\ttfamily const char test\+Input\+File\+Path\mbox{[}$\,$\mbox{]} = \char`\"{}input.\+txt\char`\"{}}
+

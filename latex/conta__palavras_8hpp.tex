@@ -1,0 +1,116 @@
+\hypertarget{conta__palavras_8hpp}{}\doxysection{conta\+\_\+palavras.\+hpp File Reference}
+\label{conta__palavras_8hpp}\index{conta\_palavras.hpp@{conta\_palavras.hpp}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$codecvt$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$locale$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for conta\+\_\+palavras.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structWordsCounter}{Words\+Counter}}
+\begin{DoxyCompactList}\small\item\em struct to get a collection of words (as strings) and build a frequency counter for each different word \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::wstring \mbox{\hyperlink{conta__palavras_8hpp_a93bc233b932cda7d71f3135e0067d7a8}{read\+File\+Content}} ()
+\begin{DoxyCompactList}\small\item\em This function reads the content in the default input file and return it as a wstring. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::wstring $>$ \mbox{\hyperlink{conta__palavras_8hpp_a162daa6db8b9e87f1d6bf074517b1a22}{split\+String\+Content\+In\+Words}} (std\+::wstring str)
+\begin{DoxyCompactList}\small\item\em this function gets a wstring and split it in its black spaces (considering space and break line) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structWordsCounter}{Words\+Counter}} \mbox{\hyperlink{conta__palavras_8hpp_a01a1078d9fd20b293223351b8830917b}{get\+Words\+Count}} ()
+\begin{DoxyCompactList}\small\item\em This function gets the content of a file splited considering blank spaces and count the frequency of each word in this text; this count use sensitive case, in other words it differs lower case and upper case character and consider them different. \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{conta__palavras_8hpp_a75ac9754702c7b0d301c2b1e07f958de}{get\+Words\+Count\+Formatted}} ()
+\begin{DoxyCompactList}\small\item\em Get the Words Count Formatted object. This format uses the pattern \char`\"{}word\+: frequency\textbackslash{}n\char`\"{}the words are sorted lexycographically in ascending order as specified in the sort of the \mbox{\hyperlink{structWordsCounter}{Words\+Counter}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{conta__palavras_8hpp_a01a1078d9fd20b293223351b8830917b}\label{conta__palavras_8hpp_a01a1078d9fd20b293223351b8830917b}} 
+\index{conta\_palavras.hpp@{conta\_palavras.hpp}!getWordsCount@{getWordsCount}}
+\index{getWordsCount@{getWordsCount}!conta\_palavras.hpp@{conta\_palavras.hpp}}
+\doxysubsubsection{\texorpdfstring{getWordsCount()}{getWordsCount()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structWordsCounter}{Words\+Counter}} get\+Words\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function gets the content of a file splited considering blank spaces and count the frequency of each word in this text; this count use sensitive case, in other words it differs lower case and upper case character and consider them different. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structWordsCounter}{Words\+Counter}}; A struct that stores a frequency counter for each word in a text 
+\end{DoxyReturn}
+\mbox{\Hypertarget{conta__palavras_8hpp_a75ac9754702c7b0d301c2b1e07f958de}\label{conta__palavras_8hpp_a75ac9754702c7b0d301c2b1e07f958de}} 
+\index{conta\_palavras.hpp@{conta\_palavras.hpp}!getWordsCountFormatted@{getWordsCountFormatted}}
+\index{getWordsCountFormatted@{getWordsCountFormatted}!conta\_palavras.hpp@{conta\_palavras.hpp}}
+\doxysubsubsection{\texorpdfstring{getWordsCountFormatted()}{getWordsCountFormatted()}}
+{\footnotesize\ttfamily std\+::wstring get\+Words\+Count\+Formatted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Words Count Formatted object. This format uses the pattern \char`\"{}word\+: frequency\textbackslash{}n\char`\"{}the words are sorted lexycographically in ascending order as specified in the sort of the \mbox{\hyperlink{structWordsCounter}{Words\+Counter}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::wstring the object containing the words and its frequency sorted lexycographically in ascending order 
+\end{DoxyReturn}
+\mbox{\Hypertarget{conta__palavras_8hpp_a93bc233b932cda7d71f3135e0067d7a8}\label{conta__palavras_8hpp_a93bc233b932cda7d71f3135e0067d7a8}} 
+\index{conta\_palavras.hpp@{conta\_palavras.hpp}!readFileContent@{readFileContent}}
+\index{readFileContent@{readFileContent}!conta\_palavras.hpp@{conta\_palavras.hpp}}
+\doxysubsubsection{\texorpdfstring{readFileContent()}{readFileContent()}}
+{\footnotesize\ttfamily std\+::wstring read\+File\+Content (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function reads the content in the default input file and return it as a wstring. 
+
+\begin{DoxyReturn}{Returns}
+std\+::wstring The content of the input file.
+\end{DoxyReturn}
+This function reads the content in the default input file and return it as a wstring.
+
+
+\begin{DoxyItemize}
+\item The input content contains just letter characters (can contains accent too)
+\item The input file is just \char`\"{}input.\+txt\char`\"{}
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+std\+::wstring The formatted content of the input file. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{conta__palavras_8hpp_a162daa6db8b9e87f1d6bf074517b1a22}\label{conta__palavras_8hpp_a162daa6db8b9e87f1d6bf074517b1a22}} 
+\index{conta\_palavras.hpp@{conta\_palavras.hpp}!splitStringContentInWords@{splitStringContentInWords}}
+\index{splitStringContentInWords@{splitStringContentInWords}!conta\_palavras.hpp@{conta\_palavras.hpp}}
+\doxysubsubsection{\texorpdfstring{splitStringContentInWords()}{splitStringContentInWords()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::wstring$>$ split\+String\+Content\+In\+Words (\begin{DoxyParamCaption}\item[{std\+::wstring}]{str }\end{DoxyParamCaption})}
+
+
+
+this function gets a wstring and split it in its black spaces (considering space and break line) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & wstring to be splited in its blank spaces\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::wstring$>$ a vector containing the words present in the \char`\"{}str\char`\"{} wstring
+\end{DoxyReturn}
+this function gets a wstring and split it in its black spaces (considering space and break line)
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & string to be splited in its blank spaces
+\begin{DoxyItemize}
+\item this blank spaces are space (\textquotesingle{} \textquotesingle{}) or break line (\textquotesingle{}~\newline
+\textquotesingle{})
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::wstring$>$ a vector containing the words present in the \char`\"{}str\char`\"{} string 
+\end{DoxyReturn}
